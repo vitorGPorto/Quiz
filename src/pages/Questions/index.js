@@ -22,40 +22,41 @@ function Questions({ navigation }) {
           <Title> Questions </Title>
 
           <SliderQuest
-          data={ [{
-            "category": "Entertainment: Music",
-            "type": "multiple",
-            "difficulty": "medium",
-            "question": "EDM producer Marshmello performs live wearing clothes and a marshmallow mask of what colour?",
-            "correct_answer": "White",
-            "incorrect_answers": [
-              "Black",
-              "Blue",
-              "Yellow"
-            ]
-          },
-          {
-            "category": "Entertainment: Music",
-            "type": "multiple",
-            "difficulty": "medium",
-            "question": "EDM producer Marshmello performs live wearing clothes and a marshmallow mask of what colour?",
-            "correct_answer": "White",
-            "incorrect_answers": [
-              "Black",
-              "Blue",
-              "Yellow"
-            ]
-          },
-          {
-            "category": "History",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "Former United States Presidents John Adams and Thomas Jefferson died within hours of each other.",
-            "correct_answer": "True",
-            "incorrect_answers": [
-              "False"
-            ]
-          },
+          data={ [
+            {
+              "category": "Science: Computers",
+              "type": "boolean",
+              "difficulty": "medium",
+              "question": "The HTML5 standard was published in 2014.",
+              "correct_answer": "True",
+              "incorrect_answers": [
+                "False"
+              ]
+            },
+            {
+              "category": "History",
+              "type": "multiple",
+              "difficulty": "medium",
+              "question": "In the War of the Pacific (1879 - 1883), Bolivia lost its access to the Pacific Ocean after being defeated by which South American country?",
+              "correct_answer": "Chile",
+              "incorrect_answers": [
+                "Peru",
+                "Brazil",
+                "Argentina"
+              ]
+            },
+            {
+              "category": "Entertainment: Cartoon & Animations",
+              "type": "multiple",
+              "difficulty": "easy",
+              "question": "In &quot;Avatar: The Last Airbender&quot;, which element does Aang begin to learn after being defrosted?",
+              "correct_answer": "Water",
+              "incorrect_answers": [
+                "Air",
+                "Earth",
+                "Fire"
+              ]
+            },
       
         ]}
           renderItem={({item})=> <Challenge data={item}/>}
