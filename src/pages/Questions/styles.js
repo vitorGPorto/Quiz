@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Container =styled.SafeAreaView`
 background-color: #FBFBFB;
 flex: 1;
-padding: 4px 0;
-margin: 3px;
+
+
 position: relative;
 `;
 export const Title = styled.Text`
@@ -17,6 +17,7 @@ export const Title = styled.Text`
     align-items: center;
     justify-content: center;
 `;
+
 
 export const Button = styled.TouchableOpacity`
 width: 40%;
@@ -33,6 +34,7 @@ flex-direction:row;
 align-items: center;
 justify-content: center;
 padding: 8px;
+
 
 `;
 export const TitleButton = styled.Text`

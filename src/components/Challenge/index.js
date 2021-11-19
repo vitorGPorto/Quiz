@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 //import Checkbox from "expo-checkbox";
 import{CheckBox} from 'react-native-elements'
 
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -11,27 +11,31 @@ import{
     Title, 
     CheckboxContainer,
     ButtonOption,
-    TextOption
+    TextOption,
+   
 } from './styles';
 import { createPermissionHook } from "expo-modules-core";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
  function Challenge({data}){
 
     
-   const  [ checked, setchecked ] =  useState();
-   const [resposta, setResposta] = useState([]);
+    
   
-   //
+    const [resposta, setResposta] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [correctOption, setCorrectOption] = useState(null);
     const [isOptionsDisabled, setIsOptionsDisabled] = useState(false);
     const [score, setScore] = useState(0)
+    const [showNextButton, setShowNextButton] = useState(false)
+    const [showScoreModal, setShowScoreModal] = useState(false)
+
 
    useEffect(() =>{
      
       if(!!data){
-         console.log('entrou')
+         
             let res = data.correct_answer;
             let res2 = data.incorrect_answers;    
       res2.push(res) 
@@ -55,26 +59,28 @@ import { createPermissionHook } from "expo-modules-core";
    const validateAnswer = (selectedOption)=>{
 
      // verificar como dever passar o data 
-      let correct_answer = data;
+      let correct_answer = data.correct_answer;
         setCurrentOptionSelected(selectedOption);
         setCorrectOption(correct_answer);
         setIsOptionsDisabled(true);
         if(selectedOption==correct_answer){
             // Set Score
             setScore(score+1)
+            console.log('valor',score)
+            console.log('selecionou',selectedOption)
         }
 
         //show Next Button 
-
+        //setShowNextButton(true)
    }
 
    const renderQuestion =  () =>{
       return(
-         <Container>
-         <Title>{currentQuestionIndex+1}</Title>
-           <Title>{data.length}</Title>
+         <View style={{}}>
+        { /*<Title>{currentQuestionIndex+1}</Title>*/}
+           <Title>Categoria: {data.category}</Title>
            <Title>{data?.question}</Title>
-         </Container>
+         </View>
       )
    }
    const renderOptions = () =>{
@@ -83,31 +89,31 @@ import { createPermissionHook } from "expo-modules-core";
    <Container>
        <CheckboxContainer>
              {resposta.map(
-                  (obj)=>{
+                  (option)=>{
                      return(
                         
                 <ButtonOption 
-                key={obj}
-                onPress={ ()=>validateAnswer(obj)} 
+                key={option}
+                onPress={ ()=>validateAnswer(option)} 
                 disabled={isOptionsDisabled}
                 style={{
-                  borderColor: obj==correctOption 
+                  borderColor: option == correctOption
                   ? '#00C851'
-                  : obj==currentOptionSelected 
+                  : option==currentOptionSelected 
                   ? "#ff4444"
                   :  '#24374D' ,
-                  backgroundColor: obj==correctOption 
+                  backgroundColor: option==correctOption 
                   ? '#00C851' +'90'
-                  : obj==currentOptionSelected 
+                  : option==currentOptionSelected 
                   ? "#ff4444"+'90'
                   : '#24374D',
                 }}
                 >
-                    <TextOption>{obj}</TextOption>
+                    <TextOption>{option}</TextOption>
 
                     {/*Mostrar ícone de verificação ou cruz com base na resposta correta*/}
                     {
-                                obj== correctOption ? (
+                                option== correctOption ? (
                                     <View style={{
                                         width: 30, height: 30, borderRadius: 10/2,
                                         backgroundColor: '#00C851',
@@ -118,7 +124,7 @@ import { createPermissionHook } from "expo-modules-core";
                                             fontSize: 20
                                         }} />
                                     </View>
-                                ): obj == currentOptionSelected ? (
+                                ): option == currentOptionSelected ? (
                                     <View style={{
                                         width: 20, height: 30, borderRadius: 10/2,
                                         backgroundColor: "#ff4444",
@@ -141,8 +147,48 @@ import { createPermissionHook } from "expo-modules-core";
    </Container>
    )
 }
-     
-      
+
+const handleNext = ()=>{
+  if(currentQuestionIndex == data.length-1){
+
+            // Ultima questão
+            // Mostrar pontuação modal
+            setShowScoreModal(true)
+  }else{
+   setCurrentQuestionIndex(currentQuestionIndex+1);
+   setCurrentOptionSelected(null);
+   setCorrectOption(null);
+   setIsOptionsDisabled(false);
+   setShowNextButton(false);
+  }
+}
+  const renderNextButton = () =>{
+
+   if(showNextButton){
+      return (
+         <TouchableOpacity
+         onPress={handleNext}
+         style={{
+            marginTop:20, 
+            width: '100%',
+            backgroundColor:'#3498db',
+            padding: 20,
+            borderRadius:5
+         }}
+         >
+            <Text 
+            style={{ 
+               fontSize:20, 
+               color:"#000",
+               textAlign:'center',
+               }} >Próxima</Text>
+         </TouchableOpacity>
+      )
+   }else{
+      return null; 
+   }
+
+  }
 
      return(
         <Container>
@@ -152,6 +198,9 @@ import { createPermissionHook } from "expo-modules-core";
 
           {/*Mostrar opcoes*/}
           {renderOptions()}
+         
+          {/*Next button*/}
+          {renderNextButton()}
              
              
         </Container>

@@ -1,5 +1,5 @@
 import React from "react";
-//import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 
 import Challenge from "../../components/Challenge";
 //import ButtonFinalizar from "../../components/ButtonFinalizar";
@@ -21,55 +21,50 @@ function Questions({ navigation }) {
       
           <Title> Questions </Title>
 
+          
           <SliderQuest
-          data={ [
+          data = { [
+           
             {
-              "category": "Science: Computers",
-              "type": "boolean",
-              "difficulty": "medium",
-              "question": "The HTML5 standard was published in 2014.",
-              "correct_answer": "True",
-              "incorrect_answers": [
-                "False"
-              ]
-            },
-            {
-              "category": "History",
+              "category": "Entertainment: Film",
               "type": "multiple",
-              "difficulty": "medium",
-              "question": "In the War of the Pacific (1879 - 1883), Bolivia lost its access to the Pacific Ocean after being defeated by which South American country?",
-              "correct_answer": "Chile",
+              "difficulty": "hard",
+              "question": "Which singer is portrayed by Bruce Campbell in the 2002 film &#039;Bubba Ho-Tep&#039;?",
+              "correct_answer": "Elvis Presley",
               "incorrect_answers": [
-                "Peru",
-                "Brazil",
-                "Argentina"
+                "Johnny Cash",
+                "Hank Williams, Sr.",
+                "Buddy Holly"
               ]
-            },
-            {
-              "category": "Entertainment: Cartoon & Animations",
+            },{
+              "category": "Entertainment: Film",
               "type": "multiple",
-              "difficulty": "easy",
-              "question": "In &quot;Avatar: The Last Airbender&quot;, which element does Aang begin to learn after being defrosted?",
-              "correct_answer": "Water",
+              "difficulty": "hard",
+              "question": "Which singer is portrayed by Bruce Campbell in the 2002 film &#039;Bubba Ho-Tep&#039;?",
+              "correct_answer": "Elvis Presley",
               "incorrect_answers": [
-                "Air",
-                "Earth",
-                "Fire"
+                "Johnny Cash",
+                "Hank Williams, Sr.",
+                "Buddy Holly"
               ]
-            },
+            }
       
         ]}
+        horizontal={false}
+        showsHorizontalScrollIndicator={false}
           renderItem={({item})=> <Challenge data={item}/>}
           />
         
-
-        <ActionContainer>
+        { /*  
+        */}
+      <ActionContainer>
         <Button onPress={() => navigation.navigate("Report")}>
           <TitleButton size={14}>FINALIZAR</TitleButton>
         </Button>
       </ActionContainer>
+       
       
-
+       
      
     </Container>
   );

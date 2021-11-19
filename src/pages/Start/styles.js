@@ -19,7 +19,8 @@ margin-left: 20px;
 export const ActionContainer = styled.View`
 flex-direction:row;
 align-items: center;
-padding: 8px;
+padding: 50px;
+
 
 `;
 export const TitleButton = styled.Text`
