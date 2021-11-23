@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container =styled.SafeAreaView`
-background-color: #FBFBFB;
+background-color: #252c4a;
 flex: 1;
 padding: 4px 0;
 `;
 export const Title = styled.Text`
 
-    color: #11141F;
+    color: #FFFFFF;
     font-size: 40px;
     font-weight: bold;
     margin-left: 110px;
@@ -17,7 +17,7 @@ export const Title = styled.Text`
 
 export const TitleInput = styled.Text`
 
-    color: #11141F;
+    color: #FFFFFF;
     font-size: 23px;
     font-weight: bold;
     margin: 40px;
@@ -31,7 +31,7 @@ height: 50px;
 border-radius: 10px;
 padding: 6px 10px;
 font-size: 18px;
-color:#FFF;
+color:#000;
 `;
 export const SearchContainer = styled.View`
 flex-direction:row;

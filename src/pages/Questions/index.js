@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from "react-native";
 
 import Challenge from "../../components/Challenge";
 //import ButtonFinalizar from "../../components/ButtonFinalizar";
-//import Quiz from "../../components/Quiz";
+import Quiz from "../../components/Quiz";
 
 import {
   Container,
@@ -18,8 +18,9 @@ function Questions({ navigation }) {
   return (
     <Container>
      
-      
-          <Title> Questions </Title>
+     
+          
+        { /*
 
           
           <SliderQuest
@@ -54,16 +55,16 @@ function Questions({ navigation }) {
         showsHorizontalScrollIndicator={false}
           renderItem={({item})=> <Challenge data={item}/>}
           />
-        
-        { /*  
-        */}
-      <ActionContainer>
+           <ActionContainer>
         <Button onPress={() => navigation.navigate("Report")}>
           <TitleButton size={14}>FINALIZAR</TitleButton>
         </Button>
       </ActionContainer>
+
+        */}
+     
        
-      
+      <Quiz/>
        
      
     </Container>

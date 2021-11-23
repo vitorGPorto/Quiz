@@ -53,9 +53,9 @@ import {useNavigation, useRoute} from '@react-navigation/native'
          <Title size={40}>Quizzes</Title>
       <Banner
         resizeMethod="resize"
-        source={require("../../assets/imagens02.png")}
+        source={require("../../assets/images/CoolKids.png")}
       ></Banner>
-      <Title size={25}>Iniciar desafio?</Title>
+      <Title size={25}>Start challenge?</Title>
         <ActionContainer>
             <Button 
             onPress={() =>  navigation.navigate('Questions')}

@@ -34,14 +34,14 @@ function Home({navigation}) {
       <Title>Quizzes</Title>
       <Banner
         resizeMethod="resize"
-        source={require("../../assets/logo2.png")}
+        source={require("../../assets/images/StuckatHome.png")}
       ></Banner>
-      <TitleInput>Qual e a quantidade de perguntas?(1 a 10)</TitleInput>
+      <TitleInput>What is the number of questions? (1 to 10)</TitleInput>
       <SearchContainer>
       <Input 
         keyboardType='decimal-pad'
         placeholder="Ex 4"
-        placeholderTextColor="#444"
+        placeholderTextColor="#000"
         value={input} 
         onChangeText={(text)=> setInput(text)}
         />

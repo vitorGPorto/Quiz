@@ -8,6 +8,7 @@ import Start from '../pages/Start';
 import Questions from '../pages/Questions/index';
 import Report from "../pages/Report";
 
+
 const Stack = createNativeStackNavigator();
 
 function StackRoutes(){
@@ -50,6 +51,8 @@ function StackRoutes(){
               headerShown: false
              }}
              />
+
+        
             
         </Stack.Navigator>
   
